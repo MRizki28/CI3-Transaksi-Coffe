@@ -22,10 +22,10 @@ $template['table_open']="<table class='table table-sm table-bordered'>";
 $this->table->set_template($template);
 $rows=null;
 foreach ($detilss as $det) {
-	$row['idproduk'] = $det['idproduk'];
+	$row['iddetailpembelian'] = $det['iddetailpembelian'];
 	$row['namaproduk'] = $det['namaproduk'];
 	$row['jumlah'] = $det['jumlah'];
-	$row['hapus'] = "<a href='".site_url('/pembelian/hapus/'.$row['idproduk'])."' class='btn btn-sm btn-danger'>Hapus</a>";
+	$row['hapus'] = "<a href='".site_url('/pembelian/hapus/'.$row['iddetailpembelian'])."' class='btn btn-sm btn-danger'>Hapus</a>";
 	$rows[]=$row;
 }
 $this->table->set_heading('ID', 'Produk', 'Jumlah', 'Hapus');
