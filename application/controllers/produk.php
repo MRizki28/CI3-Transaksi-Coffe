@@ -7,7 +7,8 @@ class Produk extends CI_Controller {
 	}
 
 	function index(){
-		$produks = $this->produk_model->select();
+		if ($this->session->has_userdata('username')) {
+			$produks = $this->produk_model->select();
 		// $data['produks'] = $this->produk_model->select();
 		$data['produks'] = null;
 		foreach ($produks as $prd) {
@@ -17,6 +18,27 @@ class Produk extends CI_Controller {
 		}
 		$konten['konten']=$this->load->view('produk',$data,true);
 		$this->load->view('template',$konten);
+		// $this->load->view('produk',$data);
+		}else{
+			$this->load->view('login');
+		}
+		
+	}
+	function login()
+	{
+		$this->load->model('user_model');
+		$key['username']=$this->input->post('username');
+		$key['password']=$this->input->post('password');
+		$user = $this->user_model->select($key);
+		if (count($user)>0) {
+			$this->session->set_userdata('username',$this->input->post('username'));
+			$this->index();
+		}
+	}
+	function logout()
+	{
+		$this->session->unset_userdata('username');
+		$this->index();
 	}
 
 	function edit($id){
