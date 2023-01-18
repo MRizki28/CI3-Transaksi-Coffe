@@ -1,33 +1,40 @@
 <?php
 class Pembelian_model extends CI_Model{
 
-	// public function __construct(){
-	// 	$this->table = 'pembelian';
-	// 	$this->id = 'idpembelian';
-	// }
-	public function insert_detail($data){
-		$this->db->insert('detailpembelian', $data);
+	public function __construct(){
+		$this->table = 'tb_pembelian';
+		$this->id = 'id_pembelian';
 	}
+	public function insert_detail($data){
+		$this->db->insert('tb_detail_pembelian', $data);
+	}
+	public function insert($data){
+		$this->db->insert($this->table, $data);
+	}
+
 
 	public function select_detail($key=null){
 		if($key != null){
 			$this->db->where($key);
 		}
-		$this->db->join('produk','produk.id = detailpembelian.idproduk');
+		// $this->db->select('id_detail_pembelian','nama_coffe','sum(jumlah)as jumlah');
+		// $this->db->select('id_detail_pembelian','harga','sum(jumlah)as jumlah');
+		// $this->db->group_by('tb_coffe.id');
+		$this->db->join('tb_coffe','tb_coffe.id = tb_detail_pembelian.id_coffe');
 		// return $this->db->get($this->table)->result_array();
-		return $this->db->get('detailpembelian')->result_array();
+		return $this->db->get('tb_detail_pembelian')->result_array();
 	}
 	public function select($key=null){
 		if($key != null){
 			$this->db->where($key);
 		}
 		// return $this->db->get($this->table)->result_array();
-		return $this->db->get('pembelian')->result_array();
+		return $this->db->get('tb_pembelian')->result_array();
 	}
 
-	public function delete_detail($idproduk) {
-		$this->db->where('iddetailpembelian', $idproduk);
-		$this->db->delete('detailpembelian');
+	public function delete_detail($id_produk) {
+		$this->db->where('id_detail_pembelian', $id_produk);
+		$this->db->delete('tb_detail_pembelian');
 	}
 
 /////
@@ -38,7 +45,7 @@ class Pembelian_model extends CI_Model{
 	}
 
 	public function delete($id_produk) {
-		$this->db->where('idpembelian', $id_produk);
-		$this->db->delete('pembelian');
+		$this->db->where('id_pembelian', $id_produk);
+		$this->db->delete('tb_pembelian');
 	}
 }

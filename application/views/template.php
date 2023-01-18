@@ -1,75 +1,138 @@
-<!doctype html>
+
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Praktik</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-	<style type="text/css">
-		aside .p {
-			background: #009080;
-			width: 90%;
-			margin-top: 10px;
-			margin-left: 10px;
-			line-height: 30px;
-			height: 30px;
-			display: inline-block;
-			
 
-		}
+    <script type="text/javascript"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Peminjaman Barang</title>
+    <meta name="description" content="STMIK ADHI GUNA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/images/stmik1.png')?>">
 
-		aside .p a {
-			color: black;
-		}
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/normalize.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/themify-icons.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/flag-icon.min.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/cs-skin-elastic.css')?>">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/scss/style.css')?>">
+    <link href="<?php echo base_url('assets/css/lib/vector-map/jqvmap.min.css')?>" rel="stylesheet">
 
-		aside .p:hover {
-			background: #00F080;
-		}
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-		footer {
-			position: fixed;
-			left: 0;
-			bottom: 0;
-			width: 100%;
-			background-color: gold;
-			color: white;
-			text-align: center;
-		}
-	</style>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
 </head>
 
 <body>
-	<div class="mt-3">
-		<div style="display:flex;">
-			<aside style="width: 200px;">
-				<header  style="background:#009080; height: 70px;">
-					<h4 class="text-center">Praktik</h4>
-				</header>
-				<div class="p text-center rounded"><a href="<?php echo site_url('produk'); ?>" class="text-decoration-none">Produk</a>
-				</div>
-				<div class="p text-center rounded"><a href="<?php echo site_url('pembelian'); ?>" class="text-decoration-none">Pembelian</a>
-				</div>
 
-			</aside>
-			<div class="container-fluid p-1">
-				<?php
+
+        <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar">
+
+            <div class="navbar-header">
+                <a class="navbar-brand"><img src="<?php echo base_url('assets/images/stmik1.png');?>"  alt="Logo"></a>
+				<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>	 -->
+            </div>
+
+            <div id="main-menu" class="main-menu navbar-collapse">
+                
+                <ul class="nav navbar-nav">
+                    <h3 class="menu-title">Menu</h3><!-- /.menu-title -->
+                    <li>
+                        <a href="<?php echo site_url('Admin/index')?>"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('coffe_controller/index')?>"> <i class="menu-icon fa fa-tasks"></i>Daftar Coffie</a>
+                    </li>
+                    <li class="active">
+                        <a href="<?php echo site_url('pembelian/index') ?>"> <i class="menu-icon fa fa-tasks"></i>Pesan</a>
+                    </li>
+                
+					<li>
+						<a href="<?php echo site_url('login_controller/logout')?>"> <i class="menu-icon fa fa fa-sign-out"></i>	Logout</a>
+					</li>
+                    
+					</li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-plus"></i></a>
+                    <div class="header-left"> 
+                    <h3>Dashboard</h3>
+                    </div>
+				</div>
+			</div>	
+        </header><!-- /header -->
+        <!-- Header-->
+		<div class="container-fluid">
+                    <div class="card">
+                      <div class="card-header">
+                        <strong>Tambah Menu </strong>
+                      </div>
+					  <?php
 				echo $konten;
-				?>
-			</div>
-		</div>
-		<footer class="bg-light text-center text-lg-start">
-			<!-- Copyright -->
-			<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-				© 2022 Copyright:
-				<a class="text-dark" href="https://github.com/MRizki28/">Muhammad Rizki</a>
-			</div>
-			<!-- Copyright -->
-		</footer>
-	</div>
+						?>
+                    </div>
+                            
+        </div>
+    </div>
 
+     
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   
+    <script src="<?php echo base_url('assets/js/vendor/jquery-2.1.4.min.js');?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="<?php echo base_url('assets/js/plugins.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/main.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/chart-js/Chart.bundle.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/dashboard.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/widgets.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/vector-map/jquery.vmap.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/vector-map/jquery.vmap.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/vector-map/jquery.vmap.sampledata.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/vector-map/country/jquery.vmap.world.js');?>"></script>
+    <script>
+        ( function ( $ ) {
+            "use strict";
+
+            jQuery( '#vmap' ).vectorMap( {
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: [ '#1de9b6', '#03a9f5' ],
+                normalizeFunction: 'polynomial'
+            } );
+        } )( jQuery );
+    </script>
+
 </body>
 
 </html>
+
